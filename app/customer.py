@@ -37,7 +37,8 @@ class Customer:
     ) -> float:
         distance = round(
             math.sqrt(
-                abs(self.location[0] - destination[0]) ** 2 + abs(self.location[1] - destination[1]) ** 2
+                abs(self.location[0] - destination[0]) ** 2
+                + abs(self.location[1] - destination[1]) ** 2
             ),
             4
         )

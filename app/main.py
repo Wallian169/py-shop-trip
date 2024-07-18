@@ -3,7 +3,7 @@ from app.shop import Shop
 import json
 
 
-def shop_trip():
+def shop_trip() -> None:
     with open("app/config.json", "r") as file:
         configs = json.load(file)
 
@@ -19,13 +19,16 @@ def shop_trip():
     for customer in customers:
         cheapest_price = customer.money
         cheapest_shop = None
+
+        print(f"{customer.name} has {customer.money} dollars")
         for shop in shops:
             shopping_costs = customer.calculate_trip_cost(
                 destination=shop.location,
                 products=shop.products,
                 fuel_price=fuel_price
             )
-            print(f"{customer.name}'s trip to the {shop.name} costs {shopping_costs}")
+            print(f"{customer.name}'s trip to the "
+                  f"{shop.name} costs {shopping_costs}")
             if shopping_costs < cheapest_price:
                 cheapest_price = shopping_costs
                 cheapest_shop = shop
